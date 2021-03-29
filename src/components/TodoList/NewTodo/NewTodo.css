@@ -1,0 +1,17 @@
+.new-todo{
+    background-color: lightcoral;
+    border: 1px solid #eee;
+    margin: 10px auto;
+    padding: 10px 5px 10px 5px;
+    width: 500px;
+}
+
+.new-todo input{
+    width:100%;
+    margin: 10px auto;
+}
+
+.new-todo textarea{
+    width:100%;
+    margin: 10px auto;
+}

@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import TodoList from '../components/TodoList/TodoList';
+import NewTodo from '../components/TodoList/NewTodo/NewTodo';
 import './App.css';
 
 class App extends Component {
@@ -26,7 +27,12 @@ class App extends Component {
           description:'Now you are ready to do cool things',
           completed:false
         }
-      ]
+      ],
+      newTodo:{
+        title:'',
+        description:'',
+        complete:false
+      }
     };
   }
 
@@ -63,7 +69,39 @@ class App extends Component {
 
     this.setState({todolist:todolist});
 
-    console.log(targetItem);
+  }
+
+  handleCreateTodo = () => {
+    const createTodo = {
+      title:this.state.newTodo.title,
+      description:this.state.newTodo.description,
+      completed:false
+    };
+
+    const newTodo ={
+      title:'',
+      description:'',
+      complete:false
+    };
+    
+    this.setState({newTodo:newTodo});
+
+    const todolist = [...this.state.todolist];
+    todolist.push(createTodo);
+
+    this.setState({todolist:todolist});
+  }
+
+  handleNewTitleChangeEvent = (event) =>{
+    const newTodo = {...this.state.newTodo};
+    newTodo.title = event.target.value;
+    this.setState({newTodo:newTodo});
+  }
+  
+  handleNewDescriptionChangeEvent = (event) =>{
+    const newTodo = {...this.state.newTodo};
+    newTodo.description = event.target.value;
+    this.setState({newTodo:newTodo});
   }
 
   render(){
@@ -75,6 +113,14 @@ class App extends Component {
           descriptionChanged={this.handleDescriptionChangeEvent}
           completedClicked={this.handleCompletedClickEvent}
         />
+        <br/>
+        <NewTodo 
+          title={this.state.newTodo.title}
+          description={this.state.newTodo.description}
+          clicked={this.handleCreateTodo}
+          titleChanged={this.handleNewTitleChangeEvent}
+          descriptionChanged={this.handleNewDescriptionChangeEvent}
+          />
       </div>
     );
   }
