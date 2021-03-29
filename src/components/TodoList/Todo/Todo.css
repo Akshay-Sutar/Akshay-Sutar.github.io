@@ -1,0 +1,17 @@
+.todo-item{
+    background-color: mintcream;
+    border: 1px solid #eee;
+    margin: 10px auto;
+    padding: 10px 5px 10px 5px;
+    width: 500px;
+}
+
+.todo-item input{
+    width:100%;
+    margin: 10px auto;
+}
+
+.todo-item textarea{
+    width:100%;
+    margin: 10px auto;
+}
