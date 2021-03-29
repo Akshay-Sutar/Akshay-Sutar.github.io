@@ -9,19 +9,19 @@ class App extends Component {
     this.state = {
       todolist:[
         {
-          id:1,
+          id:'qwe',
           title:'Learn Node Js',
           description:'Learn Node js for API and backend',
           completed:false
         },
         {
-          id:2,
+          id:'asd',
           title:'Learn React',
           description:'Learn React for front end',
           completed:false
         },
         {
-          id:3,
+          id:'zxc',
           title:'Do Cool things',
           description:'Now you are ready to do cool things',
           completed:false
@@ -53,6 +53,19 @@ class App extends Component {
     this.setState({todolist:todolist});
   }
 
+  handleCompletedClickEvent = (event, id)=>{
+    const index = this.state.todolist.findIndex( item => item.id ===id );
+    const targetItem = {...this.state.todolist[index]};
+    targetItem.completed = !targetItem.completed;
+
+    const todolist = [...this.state.todolist];
+    todolist[index] = targetItem;
+
+    this.setState({todolist:todolist});
+
+    console.log(targetItem);
+  }
+
   render(){
     return (
       <div className="App">
@@ -60,6 +73,7 @@ class App extends Component {
           todolist={this.state.todolist }
           titleChanged={this.handleTitleChangeEvent}
           descriptionChanged={this.handleDescriptionChangeEvent}
+          completedClicked={this.handleCompletedClickEvent}
         />
       </div>
     );
